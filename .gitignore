@@ -8,6 +8,7 @@ venv/
 # 构建产物
 build/
 dist/
+release/
 *.manifest
 
 # FFmpeg 便携版（构建/运行前用 tools/fetch_ffmpeg.py 获取）
