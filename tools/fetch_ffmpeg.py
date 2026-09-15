@@ -31,6 +31,12 @@ def _progress(count: int, block: int, total: int) -> None:
 
 
 def main() -> int:
+    # 控制台编码（如 CI 的 cp1252）无法映射中文时降级为 ?，避免 UnicodeEncodeError
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(errors="replace")
+        except (AttributeError, ValueError):
+            pass
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--url", default=DEFAULT_URL, help="FFmpeg 构建 zip 下载地址")
     ap.add_argument("--dest", default=str(DEST), help="目标目录")
