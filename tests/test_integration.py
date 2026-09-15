@@ -125,6 +125,16 @@ class TestIntegration(unittest.TestCase):
         r2 = pipe.process_one(src)          # 第二次应跳过
         self.assertEqual(r2.status, "skipped")
 
+    def test_cpu_encoder_path(self):
+        # 强制 hw=cpu，覆盖 cpu_args 参数路径（无 GPU 环境的必经路径）
+        src = self._make_black_video("cpu.mp4")
+        s = StampSettings(time_mode="manual", manual_time="2026-09-11 14:30:00",
+                          hw="cpu")
+        r = StampPipeline(s).process_one(src)
+        self.assertEqual(r.status, "done", f"error: {r.error}")
+        self.assertEqual(r.encoder, "cpu")
+        self.assertTrue(r.out and r.out.exists())
+
     def test_unsupported_file_rejected(self):
         fake = TMP / "fake.mp4"
         fake.write_bytes(b"not a video")

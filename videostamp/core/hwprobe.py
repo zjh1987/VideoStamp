@@ -25,10 +25,10 @@ HW_ENCODERS: dict[str, list[tuple[str, str, list[str]]]] = {
     ],
 }
 
-# family → (名称, 编码参数，首元素为编码器名)
+# family → (名称, 编码参数，含 -c:v 前缀与编码器名)
 CPU_ENCODERS: dict[str, tuple[str, list[str]]] = {
-    "h264": ("cpu", ["libx264", "-preset", "veryfast", "-crf", "20"]),
-    "hevc": ("cpu", ["libx265", "-preset", "veryfast", "-crf", "22"]),
+    "h264": ("cpu", ["-c:v", "libx264", "-preset", "veryfast", "-crf", "20"]),
+    "hevc": ("cpu", ["-c:v", "libx265", "-preset", "veryfast", "-crf", "22"]),
 }
 
 _cache: dict[tuple[str, str], tuple[str, list[str]]] = {}

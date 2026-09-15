@@ -50,9 +50,10 @@ class TestCreationTime(unittest.TestCase):
         )
 
     def test_offset_form(self):
+        # 18:30+08:00 == 10:30 UTC；结果应等于 UTC 读数 + 本地时区偏移
         dt = parse_creation_time("2026-09-01T18:30:00+08:00")
-        self.assertEqual(dt.hour, 18)
-        self.assertEqual(dt.minute, 30)
+        offset = datetime.now().astimezone().utcoffset()
+        self.assertEqual(dt, datetime(2026, 9, 1, 10, 30) + offset)
 
     def test_invalid(self):
         with self.assertRaises(TimeSourceError):
