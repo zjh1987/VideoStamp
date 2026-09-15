@@ -21,12 +21,12 @@
 
 ### 方式一：下载打包好的 EXE（推荐普通用户）
 
-从 [Releases](../../releases) 下载 `VideoStamp.zip`，解压后双击 `VideoStamp.exe` 即可，详见 [离线安装与验证指南](docs/离线安装与验证指南.md)。
+从 [Releases](https://github.com/zjh1987/VideoStamp/releases) 下载 `VideoStamp.zip`，解压后双击 `VideoStamp.exe` 即可，详见 [离线安装与验证指南](docs/离线安装与验证指南.md)。
 
 ### 方式二：从源码运行（Windows 10/11, Python 3.10+）
 
 ```bat
-git clone https://github.com/<your-username>/VideoStamp.git
+git clone https://github.com/zjh1987/VideoStamp.git
 cd VideoStamp
 pip install -r requirements.txt
 
