@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 构建产物
+build/
+dist/
+*.manifest
+
+# FFmpeg 便携版（构建/运行前用 tools/fetch_ffmpeg.py 获取）
+videostamp/vendor/
+
+# 便携配置（程序运行时自动生成）
+config/
+
+# 测试临时产物
+tests/_tmp*/
+tests/_dbg/
+tests/_e2e_tmp/
+tests/_it_tmp/
+tests/_smoke_tmp/
+
+# 日志与临时文件
+*.log
+*.tmp
+
+# IDE
+.vscode/
+.idea/
